@@ -1,5 +1,5 @@
 <template>
-  <div class="max-w-[1200px] mx-auto min-h-screen bg-black">
+  <div class="max-w-[1200px] mx-auto min-h-screen bg-black pb-10">
     <header
       class="bg-[url('../assets/1627489123_32.jpg')] w-full h-60 object-cover bg-no-repeat bg-center"
     >
@@ -13,7 +13,7 @@
       <div
         class="rounded-xl -mt-10 bg-gray-900/70 w-[90%] min-h-80 p-4 text-gray-300"
       >
-        <table class="table-auto w-full">
+        <table class="table-auto w-full min-h-full">
           <thead class="w-full">
             <tr
               class="w-full text-xl flex items-center justify-between border-b p-2 text-white"
@@ -28,18 +28,18 @@
                 class="w-1/5 inline-flex items-start self-start animate-pulse cursor-pointer hover:text-cyan-500"
                 @click="sortMinTemperature"
               >
-                Min.temperature
+                Min<span class="hidden md:inline-flex">.temperature</span>
               </th>
               <th
                 class="w-1/5 inline-flex items-start self-start animate-pulse cursor-pointer hover:text-cyan-500"
                 @click="sortMaxTemperature"
               >
-                Max.temperature
+                Max<span class="hidden md:inline-flex">.temperature</span>
               </th>
               <th
                 class="w-1/5 inline-flex items-start self-start animate-pulse cursor-pointer hover:text-cyan-500"
               >
-                Delete city
+                Delete<span class="hidden sm:inline-flex ml-2"> city</span>
               </th>
             </tr>
           </thead>
@@ -51,7 +51,7 @@
             <tr
               class="text-lg flex justify-between w-full items-center p-2 bg-gray-800 rounded-sm drop-shadow-md"
             >
-              <td class="w-1/5 flex flex-col">
+              <td class="w-1/5 flex flex-col text-cyan-300">
                 {{
                   city?.timezone
                     .split("/")
@@ -60,21 +60,21 @@
                     .join("")
                     .replace("_", " ")
                 }}
-                <span>{{
+                <span class="text-sm sm:text-base text-lime-400">{{
                   city?.daily.time.join(".").split("-").join(".").slice(0, 10)
                 }}</span>
               </td>
-              <td class="w-1/5 text-sky-500">
+              <td class="w-1/5 text-sky-500 text-base sm:text-lg">
                 {{ city?.daily.temperature_2m_min.join(", ")
                 }}<span>{{ city?.daily_units.temperature_2m_min }}</span>
               </td>
-              <td class="w-1/5 text-yellow-500">
+              <td class="w-1/5 text-yellow-500 text-base sm:text-lg">
                 {{ city?.daily.temperature_2m_max.join(", ")
                 }}<span>{{ city?.daily_units.temperature_2m_max }}</span>
               </td>
               <td class="w-1/5">
                 <button
-                  class="bg-red-700 text-white rounded-lg hover:bg-red-800 px-3 py-1"
+                  class="bg-red-700 text-white rounded-lg hover:bg-red-800 sm:px-3 sm:py-1 p-1"
                   @click="deleteCity(city?.timezone)"
                 >
                   Delete
