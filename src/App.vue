@@ -91,7 +91,7 @@
             <label class="cursor-pointer" for="select_date">
               Enter the day you are interested in and find out the weather.
             </label>
-            <form @submit.prevent="selectDay(select_date)">
+            <form class="flex space-x-3" @submit.prevent="selectDay(select_date)">
               <input
                 class="text-black"
                 id="select_date"
@@ -99,6 +99,7 @@
                 placeholder="2023-01-01"
                 v-model="this.select_date"
               />
+              <button class="px-2 py-1 bg-sky-600 rounded-md hover:bg-sky-800" @submit.prevent="selectDay(select_date)">Submit</button>
             </form>
             <span v-if="handleError" class="text-red-600"
               >Something is wrong.Please try to enter the correct date!</span
